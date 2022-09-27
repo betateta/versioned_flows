@@ -17,14 +17,42 @@
         "flowFileOutboundPolicy" : "STREAM_WHEN_AVAILABLE",
         "funnels" : [ ],
         "identifier" : "1e811af3-8cbd-314f-9376-0c9d48c12cb4",
-        "inputPorts" : [ ],
+        "inputPorts" : [ {
+          "allowRemoteAccess" : false,
+          "componentType" : "INPUT_PORT",
+          "concurrentlySchedulableTaskCount" : 1,
+          "groupIdentifier" : "1e811af3-8cbd-314f-9376-0c9d48c12cb4",
+          "identifier" : "23fc67d3-b87e-3086-bb13-899d1d0c2898",
+          "instanceIdentifier" : "7f00dce7-0183-1000-fa51-88f5e7765be4",
+          "name" : "wer",
+          "position" : {
+            "x" : 463.0,
+            "y" : 174.0
+          },
+          "scheduledState" : "ENABLED",
+          "type" : "INPUT_PORT"
+        } ],
         "instanceIdentifier" : "7ee6f2e1-0183-1000-e086-b49a9545d029",
         "labels" : [ ],
         "name" : "flow",
-        "outputPorts" : [ ],
+        "outputPorts" : [ {
+          "allowRemoteAccess" : false,
+          "componentType" : "OUTPUT_PORT",
+          "concurrentlySchedulableTaskCount" : 1,
+          "groupIdentifier" : "1e811af3-8cbd-314f-9376-0c9d48c12cb4",
+          "identifier" : "5284e693-61f4-396a-9984-3c72630e9ecc",
+          "instanceIdentifier" : "7f01713a-0183-1000-ce78-3adfaf6781f0",
+          "name" : "eg",
+          "position" : {
+            "x" : 584.0,
+            "y" : 333.0
+          },
+          "scheduledState" : "ENABLED",
+          "type" : "OUTPUT_PORT"
+        } ],
         "position" : {
-          "x" : 526.0,
-          "y" : 173.0
+          "x" : 456.0,
+          "y" : 80.0
         },
         "processGroups" : [ ],
         "processors" : [ ],

@@ -1,5 +1,5 @@
 flows:
-  d332507b-2839-4b1d-8f6e-36256bd089b5: {ver: 1, file: test_flow.snapshot, comments: '',
-    author: anonymous, created: 1664281421165, flowName: test flow, flowDesc: ''}
+  d332507b-2839-4b1d-8f6e-36256bd089b5: {ver: 2, file: test_flow.snapshot, comments: df,
+    author: anonymous, created: 1664283164018, flowName: test flow, flowDesc: ''}
 layoutVer: 1
 bucketId: 36536a82-460f-4ba5-8896-b3d5ca966efd
