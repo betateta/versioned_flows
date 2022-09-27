@@ -5,6 +5,9 @@ flows:
     author: anonymous, created: 1664286455916, flowName: vie, flowDesc: ''}
   1ececda5-ee42-4c8e-825c-e8eebbf64c3b: {ver: 1, file: dc1_raw_trans.snapshot, comments: '',
     author: anonymous, created: 1664286436518, flowName: dc1_raw_trans, flowDesc: ''}
+  26e6b81c-5f6f-4aac-b116-38d27aba059e: {ver: 1, file: dc1_kafka-raw_mobile_app_v1_obd_data.snapshot,
+    comments: '', author: anonymous, created: 1664287385093, flowName: dc1_kafka-raw_mobile_app_v1_obd_data,
+    flowDesc: ''}
   6181dd2e-8091-4692-a8ec-d8f6ca8d546d: {ver: 1, file: dc1.snapshot, comments: '',
     author: anonymous, created: 1664286318822, flowName: dc1, flowDesc: ''}
 layoutVer: 1
