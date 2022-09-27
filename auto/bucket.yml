@@ -1,6 +1,4 @@
 flows:
-  d332507b-2839-4b1d-8f6e-36256bd089b5: {ver: 4, file: test_flow.snapshot, comments: v3,
-    author: anonymous, created: 1664283393327, flowName: test flow, flowDesc: ''}
   99184a1a-2751-4127-9ee7-babb8d4e232e: {ver: 1, file: test1.snapshot, comments: '',
     author: anonymous, created: 1664283731778, flowName: test1, flowDesc: ''}
 layoutVer: 1
