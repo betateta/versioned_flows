@@ -1,0 +1,1278 @@
+{
+  "header" : {
+    "dataModelVersion" : "3"
+  },
+  "content" : {
+    "flowSnapshot" : {
+      "externalControllerServices" : { },
+      "flowContents" : {
+        "comments" : "Прием raw данных из Kafka, слияние по N мегабайт и запись в HDFS.",
+        "componentType" : "PROCESS_GROUP",
+        "connections" : [ {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+            "id" : "e1bbdb54-95a5-39ff-84ef-8514f7b884cf",
+            "instanceIdentifier" : "12dd3f76-2862-3d24-a973-ae40d6d65807",
+            "name" : "Переименовать проблемный файл",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "4ea978a0-63a6-32db-8cd0-b19074d004e7",
+          "instanceIdentifier" : "eba5efe0-e6df-3850-dd25-21598f72e4d7",
+          "labelIndex" : 1,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "failure: слияние",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "failure" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+            "id" : "c4d191bc-6a70-32b4-ac33-248b21bc04de",
+            "instanceIdentifier" : "34f16e7d-67a0-3de1-cc69-2c68296fad06",
+            "name" : "Сбор большого файла на основе сообщений Kafka",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+            "id" : "a21c56b4-384f-3a0a-ae07-ce0b6dd0b2c3",
+            "instanceIdentifier" : "c1c62485-92d9-3597-c9ac-9194c7945c90",
+            "name" : "Запись в HDFS",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "4e29b410-2275-3e89-ad60-b9a475b47d12",
+          "instanceIdentifier" : "b43bb4a5-7542-3c59-8f13-77bae75b45ed",
+          "labelIndex" : 1,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "success" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+            "id" : "a4dc5c78-491d-3883-83e0-2c56c41a9678",
+            "instanceIdentifier" : "969cf21a-a9fc-34f3-729d-b465005aa878",
+            "name" : "Переименовать файл",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ {
+            "x" : 608.0,
+            "y" : 432.0
+          } ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+            "id" : "a4dc5c78-491d-3883-83e0-2c56c41a9678",
+            "instanceIdentifier" : "969cf21a-a9fc-34f3-729d-b465005aa878",
+            "name" : "Переименовать файл",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "fbc820a9-1f77-322e-8c5f-567afe64f275",
+          "instanceIdentifier" : "fd0d6a1a-4d34-3d96-1567-dc4e6ab8c90d",
+          "labelIndex" : 1,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "merged" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+            "id" : "c4d191bc-6a70-32b4-ac33-248b21bc04de",
+            "instanceIdentifier" : "34f16e7d-67a0-3de1-cc69-2c68296fad06",
+            "name" : "Сбор большого файла на основе сообщений Kafka",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+            "id" : "c4d191bc-6a70-32b4-ac33-248b21bc04de",
+            "instanceIdentifier" : "34f16e7d-67a0-3de1-cc69-2c68296fad06",
+            "name" : "Сбор большого файла на основе сообщений Kafka",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "47697204-5805-381b-a865-aa3549408eeb",
+          "instanceIdentifier" : "e11b55ab-b4b5-381d-0e73-557cc8d2a928",
+          "labelIndex" : 1,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "success" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+            "id" : "71ef2e09-4653-3054-9d98-b4d926dfee59",
+            "instanceIdentifier" : "82da99de-c546-300d-4552-8b3503805a10",
+            "name" : "WriteMetadataToRawProcessor",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+            "id" : "71ef2e09-4653-3054-9d98-b4d926dfee59",
+            "instanceIdentifier" : "82da99de-c546-300d-4552-8b3503805a10",
+            "name" : "WriteMetadataToRawProcessor",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "e0cd3437-1c53-34db-8f4d-3ca95e791bae",
+          "instanceIdentifier" : "bd74058e-7d17-3c81-08bf-cde43e5e77cb",
+          "labelIndex" : 1,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "success" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+            "id" : "2305ddf3-a3aa-30c5-8717-15779de20473",
+            "instanceIdentifier" : "634f015e-99f1-3091-74c7-f2c6e77be8fe",
+            "name" : "Сбор из Kafka",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        }, {
+          "backPressureDataSizeThreshold" : "1 GB",
+          "backPressureObjectThreshold" : 10000,
+          "bends" : [ ],
+          "componentType" : "CONNECTION",
+          "destination" : {
+            "comments" : "",
+            "groupId" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+            "id" : "f1067def-0d94-366f-903e-8df71706bef4",
+            "instanceIdentifier" : "56233d80-3dd3-3ced-fbb6-6d091228c5c2",
+            "name" : "Запись в HDFS при неудаче",
+            "type" : "PROCESSOR"
+          },
+          "flowFileExpiration" : "0 sec",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "d7672897-3e67-3923-bdfb-e69b5b6b3f53",
+          "instanceIdentifier" : "bcf32fa2-3c65-3b66-f700-b270d80b5de1",
+          "labelIndex" : 1,
+          "loadBalanceCompression" : "DO_NOT_COMPRESS",
+          "loadBalanceStrategy" : "DO_NOT_LOAD_BALANCE",
+          "name" : "",
+          "partitioningAttribute" : "",
+          "prioritizers" : [ ],
+          "selectedRelationships" : [ "success" ],
+          "source" : {
+            "comments" : "",
+            "groupId" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+            "id" : "e1bbdb54-95a5-39ff-84ef-8514f7b884cf",
+            "instanceIdentifier" : "12dd3f76-2862-3d24-a973-ae40d6d65807",
+            "name" : "Переименовать проблемный файл",
+            "type" : "PROCESSOR"
+          },
+          "zIndex" : 0
+        } ],
+        "controllerServices" : [ ],
+        "defaultBackPressureDataSizeThreshold" : "1 GB",
+        "defaultBackPressureObjectThreshold" : 10000,
+        "defaultFlowFileExpiration" : "0 sec",
+        "flowFileConcurrency" : "UNBOUNDED",
+        "flowFileOutboundPolicy" : "STREAM_WHEN_AVAILABLE",
+        "funnels" : [ ],
+        "identifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+        "inputPorts" : [ ],
+        "instanceIdentifier" : "7f314e0f-0183-1000-b4ec-04e5fbef3a98",
+        "labels" : [ ],
+        "name" : "dc1_kafka-raw_mobile_app_v1_obd_data",
+        "outputPorts" : [ ],
+        "parameterContextName" : "template",
+        "position" : {
+          "x" : 248.0,
+          "y" : -16.0
+        },
+        "processGroups" : [ ],
+        "processors" : [ {
+          "autoTerminatedRelationships" : [ ],
+          "backoffMechanism" : "PENALIZE_FLOWFILE",
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-update-attribute-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.17.0"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "e1bbdb54-95a5-39ff-84ef-8514f7b884cf",
+          "instanceIdentifier" : "12dd3f76-2862-3d24-a973-ae40d6d65807",
+          "maxBackoffPeriod" : "10 mins",
+          "name" : "Переименовать проблемный файл",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 1328.0,
+            "y" : 224.0
+          },
+          "properties" : {
+            "filename" : "orig.#{rawFileName}",
+            "Store State" : "Do not store state",
+            "canonical-value-lookup-cache-size" : "100"
+          },
+          "propertyDescriptors" : {
+            "Delete Attributes Expression" : {
+              "displayName" : "Delete Attributes Expression",
+              "identifiesControllerService" : false,
+              "name" : "Delete Attributes Expression",
+              "sensitive" : false
+            },
+            "filename" : {
+              "displayName" : "filename",
+              "identifiesControllerService" : false,
+              "name" : "filename",
+              "sensitive" : false
+            },
+            "Store State" : {
+              "displayName" : "Store State",
+              "identifiesControllerService" : false,
+              "name" : "Store State",
+              "sensitive" : false
+            },
+            "canonical-value-lookup-cache-size" : {
+              "displayName" : "Cache Value Lookup Cache Size",
+              "identifiesControllerService" : false,
+              "name" : "canonical-value-lookup-cache-size",
+              "sensitive" : false
+            },
+            "Stateful Variables Initial Value" : {
+              "displayName" : "Stateful Variables Initial Value",
+              "identifiesControllerService" : false,
+              "name" : "Stateful Variables Initial Value",
+              "sensitive" : false
+            }
+          },
+          "retriedRelationships" : [ ],
+          "retryCount" : 10,
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.attributes.UpdateAttribute",
+          "yieldDuration" : "1 sec"
+        }, {
+          "autoTerminatedRelationships" : [ ],
+          "backoffMechanism" : "PENALIZE_FLOWFILE",
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-metadata-raw-processor-nar",
+            "group" : "com.reksoft",
+            "version" : "1.0"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "71ef2e09-4653-3054-9d98-b4d926dfee59",
+          "instanceIdentifier" : "82da99de-c546-300d-4552-8b3503805a10",
+          "maxBackoffPeriod" : "10 mins",
+          "name" : "WriteMetadataToRawProcessor",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 424.0,
+            "y" : -48.0
+          },
+          "properties" : { },
+          "propertyDescriptors" : {
+            "ATTRIBUTES_LIST" : {
+              "displayName" : "ATTRIBUTES_LIST",
+              "identifiesControllerService" : false,
+              "name" : "ATTRIBUTES_LIST",
+              "sensitive" : true
+            },
+            "END_SEQUENCE" : {
+              "displayName" : "END_SEQUENCE",
+              "identifiesControllerService" : false,
+              "name" : "END_SEQUENCE",
+              "sensitive" : true
+            },
+            "START_SEQUENCE" : {
+              "displayName" : "START_SEQUENCE",
+              "identifiesControllerService" : false,
+              "name" : "START_SEQUENCE",
+              "sensitive" : true
+            }
+          },
+          "retriedRelationships" : [ ],
+          "retryCount" : 10,
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "com.reksoft.autodata.nifi.processor.WriteMetadataToRawProcessor",
+          "yieldDuration" : "1 sec"
+        }, {
+          "autoTerminatedRelationships" : [ "original" ],
+          "backoffMechanism" : "PENALIZE_FLOWFILE",
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-standard-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.17.0"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "c4d191bc-6a70-32b4-ac33-248b21bc04de",
+          "instanceIdentifier" : "34f16e7d-67a0-3de1-cc69-2c68296fad06",
+          "maxBackoffPeriod" : "10 mins",
+          "name" : "Сбор большого файла на основе сообщений Kafka",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 424.0,
+            "y" : 208.0
+          },
+          "properties" : {
+            "Keep Path" : "false",
+            "Maximum Group Size" : "#{RAW data batch size}",
+            "Merge Strategy" : "Bin-Packing Algorithm",
+            "Attribute Strategy" : "Keep All Unique Attributes",
+            "Compression Level" : "1",
+            "Maximum Number of Entries" : "1000",
+            "Minimum Group Size" : "#{RAW data batch size}",
+            "Maximum number of Bins" : "5",
+            "Tar Modified Time" : "${file.lastModifiedTime}",
+            "Delimiter Strategy" : "Do Not Use Delimiters",
+            "Merge Format" : "Binary Concatenation",
+            "Max Bin Age" : "#{RAW data listening timeout}",
+            "mergecontent-metadata-strategy" : "Do Not Merge Uncommon Metadata",
+            "Minimum Number of Entries" : "1"
+          },
+          "propertyDescriptors" : {
+            "Keep Path" : {
+              "displayName" : "Keep Path",
+              "identifiesControllerService" : false,
+              "name" : "Keep Path",
+              "sensitive" : false
+            },
+            "Maximum Group Size" : {
+              "displayName" : "Maximum Group Size",
+              "identifiesControllerService" : false,
+              "name" : "Maximum Group Size",
+              "sensitive" : false
+            },
+            "Merge Strategy" : {
+              "displayName" : "Merge Strategy",
+              "identifiesControllerService" : false,
+              "name" : "Merge Strategy",
+              "sensitive" : false
+            },
+            "Attribute Strategy" : {
+              "displayName" : "Attribute Strategy",
+              "identifiesControllerService" : false,
+              "name" : "Attribute Strategy",
+              "sensitive" : false
+            },
+            "Compression Level" : {
+              "displayName" : "Compression Level",
+              "identifiesControllerService" : false,
+              "name" : "Compression Level",
+              "sensitive" : false
+            },
+            "Maximum Number of Entries" : {
+              "displayName" : "Maximum Number of Entries",
+              "identifiesControllerService" : false,
+              "name" : "Maximum Number of Entries",
+              "sensitive" : false
+            },
+            "Minimum Group Size" : {
+              "displayName" : "Minimum Group Size",
+              "identifiesControllerService" : false,
+              "name" : "Minimum Group Size",
+              "sensitive" : false
+            },
+            "Maximum number of Bins" : {
+              "displayName" : "Maximum number of Bins",
+              "identifiesControllerService" : false,
+              "name" : "Maximum number of Bins",
+              "sensitive" : false
+            },
+            "Tar Modified Time" : {
+              "displayName" : "Tar Modified Time",
+              "identifiesControllerService" : false,
+              "name" : "Tar Modified Time",
+              "sensitive" : false
+            },
+            "Delimiter Strategy" : {
+              "displayName" : "Delimiter Strategy",
+              "identifiesControllerService" : false,
+              "name" : "Delimiter Strategy",
+              "sensitive" : false
+            },
+            "Merge Format" : {
+              "displayName" : "Merge Format",
+              "identifiesControllerService" : false,
+              "name" : "Merge Format",
+              "sensitive" : false
+            },
+            "Footer File" : {
+              "displayName" : "Footer",
+              "identifiesControllerService" : false,
+              "name" : "Footer File",
+              "resourceDefinition" : {
+                "cardinality" : "SINGLE",
+                "resourceTypes" : [ "FILE", "TEXT" ]
+              },
+              "sensitive" : false
+            },
+            "Max Bin Age" : {
+              "displayName" : "Max Bin Age",
+              "identifiesControllerService" : false,
+              "name" : "Max Bin Age",
+              "sensitive" : false
+            },
+            "Demarcator File" : {
+              "displayName" : "Demarcator",
+              "identifiesControllerService" : false,
+              "name" : "Demarcator File",
+              "resourceDefinition" : {
+                "cardinality" : "SINGLE",
+                "resourceTypes" : [ "FILE", "TEXT" ]
+              },
+              "sensitive" : false
+            },
+            "Correlation Attribute Name" : {
+              "displayName" : "Correlation Attribute Name",
+              "identifiesControllerService" : false,
+              "name" : "Correlation Attribute Name",
+              "sensitive" : false
+            },
+            "Header File" : {
+              "displayName" : "Header",
+              "identifiesControllerService" : false,
+              "name" : "Header File",
+              "resourceDefinition" : {
+                "cardinality" : "SINGLE",
+                "resourceTypes" : [ "FILE", "TEXT" ]
+              },
+              "sensitive" : false
+            },
+            "mergecontent-metadata-strategy" : {
+              "displayName" : "Metadata Strategy",
+              "identifiesControllerService" : false,
+              "name" : "mergecontent-metadata-strategy",
+              "sensitive" : false
+            },
+            "Minimum Number of Entries" : {
+              "displayName" : "Minimum Number of Entries",
+              "identifiesControllerService" : false,
+              "name" : "Minimum Number of Entries",
+              "sensitive" : false
+            }
+          },
+          "retriedRelationships" : [ ],
+          "retryCount" : 10,
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.standard.MergeContent",
+          "yieldDuration" : "1 sec"
+        }, {
+          "autoTerminatedRelationships" : [ "success", "failure" ],
+          "backoffMechanism" : "PENALIZE_FLOWFILE",
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-hadoop-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.17.0"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "a21c56b4-384f-3a0a-ae07-ce0b6dd0b2c3",
+          "instanceIdentifier" : "c1c62485-92d9-3597-c9ac-9194c7945c90",
+          "maxBackoffPeriod" : "10 mins",
+          "name" : "Запись в HDFS",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 440.0,
+            "y" : 728.0
+          },
+          "properties" : {
+            "Hadoop Configuration Resources" : "#{Hadoop Configuration Resources}",
+            "Compression codec" : "BZIP",
+            "Ignore Locality" : "false",
+            "writing-strategy" : "writeAndRename",
+            "Kerberos Relogin Period" : "4 hours",
+            "Directory" : "#{rawDirectory}",
+            "Conflict Resolution Strategy" : "fail"
+          },
+          "propertyDescriptors" : {
+            "Permissions umask" : {
+              "displayName" : "Permissions umask",
+              "identifiesControllerService" : false,
+              "name" : "Permissions umask",
+              "sensitive" : false
+            },
+            "Hadoop Configuration Resources" : {
+              "displayName" : "Hadoop Configuration Resources",
+              "identifiesControllerService" : false,
+              "name" : "Hadoop Configuration Resources",
+              "resourceDefinition" : {
+                "cardinality" : "MULTIPLE",
+                "resourceTypes" : [ "FILE" ]
+              },
+              "sensitive" : false
+            },
+            "Remote Owner" : {
+              "displayName" : "Remote Owner",
+              "identifiesControllerService" : false,
+              "name" : "Remote Owner",
+              "sensitive" : false
+            },
+            "Additional Classpath Resources" : {
+              "displayName" : "Additional Classpath Resources",
+              "identifiesControllerService" : false,
+              "name" : "Additional Classpath Resources",
+              "resourceDefinition" : {
+                "cardinality" : "MULTIPLE",
+                "resourceTypes" : [ "FILE", "DIRECTORY" ]
+              },
+              "sensitive" : false
+            },
+            "Compression codec" : {
+              "displayName" : "Compression codec",
+              "identifiesControllerService" : false,
+              "name" : "Compression codec",
+              "sensitive" : false
+            },
+            "IO Buffer Size" : {
+              "displayName" : "IO Buffer Size",
+              "identifiesControllerService" : false,
+              "name" : "IO Buffer Size",
+              "sensitive" : false
+            },
+            "Remote Group" : {
+              "displayName" : "Remote Group",
+              "identifiesControllerService" : false,
+              "name" : "Remote Group",
+              "sensitive" : false
+            },
+            "Block Size" : {
+              "displayName" : "Block Size",
+              "identifiesControllerService" : false,
+              "name" : "Block Size",
+              "sensitive" : false
+            },
+            "kerberos-credentials-service" : {
+              "displayName" : "Kerberos Credentials Service",
+              "identifiesControllerService" : true,
+              "name" : "kerberos-credentials-service",
+              "sensitive" : false
+            },
+            "Kerberos Password" : {
+              "displayName" : "Kerberos Password",
+              "identifiesControllerService" : false,
+              "name" : "Kerberos Password",
+              "sensitive" : true
+            },
+            "Kerberos Keytab" : {
+              "displayName" : "Kerberos Keytab",
+              "identifiesControllerService" : false,
+              "name" : "Kerberos Keytab",
+              "resourceDefinition" : {
+                "cardinality" : "SINGLE",
+                "resourceTypes" : [ "FILE" ]
+              },
+              "sensitive" : false
+            },
+            "Ignore Locality" : {
+              "displayName" : "Ignore Locality",
+              "identifiesControllerService" : false,
+              "name" : "Ignore Locality",
+              "sensitive" : false
+            },
+            "Kerberos Principal" : {
+              "displayName" : "Kerberos Principal",
+              "identifiesControllerService" : false,
+              "name" : "Kerberos Principal",
+              "sensitive" : false
+            },
+            "Replication" : {
+              "displayName" : "Replication",
+              "identifiesControllerService" : false,
+              "name" : "Replication",
+              "sensitive" : false
+            },
+            "kerberos-user-service" : {
+              "displayName" : "Kerberos User Service",
+              "identifiesControllerService" : true,
+              "name" : "kerberos-user-service",
+              "sensitive" : false
+            },
+            "writing-strategy" : {
+              "displayName" : "Writing Strategy",
+              "identifiesControllerService" : false,
+              "name" : "writing-strategy",
+              "sensitive" : false
+            },
+            "Kerberos Relogin Period" : {
+              "displayName" : "Kerberos Relogin Period",
+              "identifiesControllerService" : false,
+              "name" : "Kerberos Relogin Period",
+              "sensitive" : false
+            },
+            "Directory" : {
+              "displayName" : "Directory",
+              "identifiesControllerService" : false,
+              "name" : "Directory",
+              "sensitive" : false
+            },
+            "Conflict Resolution Strategy" : {
+              "displayName" : "Conflict Resolution Strategy",
+              "identifiesControllerService" : false,
+              "name" : "Conflict Resolution Strategy",
+              "sensitive" : false
+            }
+          },
+          "retriedRelationships" : [ ],
+          "retryCount" : 10,
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.hadoop.PutHDFS",
+          "yieldDuration" : "1 sec"
+        }, {
+          "autoTerminatedRelationships" : [ "success", "failure" ],
+          "backoffMechanism" : "PENALIZE_FLOWFILE",
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-hadoop-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.17.0"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "f1067def-0d94-366f-903e-8df71706bef4",
+          "instanceIdentifier" : "56233d80-3dd3-3ced-fbb6-6d091228c5c2",
+          "maxBackoffPeriod" : "10 mins",
+          "name" : "Запись в HDFS при неудаче",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 1336.0,
+            "y" : 712.0
+          },
+          "properties" : {
+            "Hadoop Configuration Resources" : "#{Hadoop Configuration Resources}",
+            "Compression codec" : "BZIP",
+            "Ignore Locality" : "false",
+            "writing-strategy" : "writeAndRename",
+            "Kerberos Relogin Period" : "4 hours",
+            "Directory" : "#{rawIssueDirectory}",
+            "Conflict Resolution Strategy" : "fail"
+          },
+          "propertyDescriptors" : {
+            "Permissions umask" : {
+              "displayName" : "Permissions umask",
+              "identifiesControllerService" : false,
+              "name" : "Permissions umask",
+              "sensitive" : false
+            },
+            "Hadoop Configuration Resources" : {
+              "displayName" : "Hadoop Configuration Resources",
+              "identifiesControllerService" : false,
+              "name" : "Hadoop Configuration Resources",
+              "resourceDefinition" : {
+                "cardinality" : "MULTIPLE",
+                "resourceTypes" : [ "FILE" ]
+              },
+              "sensitive" : false
+            },
+            "Remote Owner" : {
+              "displayName" : "Remote Owner",
+              "identifiesControllerService" : false,
+              "name" : "Remote Owner",
+              "sensitive" : false
+            },
+            "Additional Classpath Resources" : {
+              "displayName" : "Additional Classpath Resources",
+              "identifiesControllerService" : false,
+              "name" : "Additional Classpath Resources",
+              "resourceDefinition" : {
+                "cardinality" : "MULTIPLE",
+                "resourceTypes" : [ "FILE", "DIRECTORY" ]
+              },
+              "sensitive" : false
+            },
+            "Compression codec" : {
+              "displayName" : "Compression codec",
+              "identifiesControllerService" : false,
+              "name" : "Compression codec",
+              "sensitive" : false
+            },
+            "IO Buffer Size" : {
+              "displayName" : "IO Buffer Size",
+              "identifiesControllerService" : false,
+              "name" : "IO Buffer Size",
+              "sensitive" : false
+            },
+            "Remote Group" : {
+              "displayName" : "Remote Group",
+              "identifiesControllerService" : false,
+              "name" : "Remote Group",
+              "sensitive" : false
+            },
+            "Block Size" : {
+              "displayName" : "Block Size",
+              "identifiesControllerService" : false,
+              "name" : "Block Size",
+              "sensitive" : false
+            },
+            "kerberos-credentials-service" : {
+              "displayName" : "Kerberos Credentials Service",
+              "identifiesControllerService" : true,
+              "name" : "kerberos-credentials-service",
+              "sensitive" : false
+            },
+            "Kerberos Password" : {
+              "displayName" : "Kerberos Password",
+              "identifiesControllerService" : false,
+              "name" : "Kerberos Password",
+              "sensitive" : true
+            },
+            "Kerberos Keytab" : {
+              "displayName" : "Kerberos Keytab",
+              "identifiesControllerService" : false,
+              "name" : "Kerberos Keytab",
+              "resourceDefinition" : {
+                "cardinality" : "SINGLE",
+                "resourceTypes" : [ "FILE" ]
+              },
+              "sensitive" : false
+            },
+            "Ignore Locality" : {
+              "displayName" : "Ignore Locality",
+              "identifiesControllerService" : false,
+              "name" : "Ignore Locality",
+              "sensitive" : false
+            },
+            "Kerberos Principal" : {
+              "displayName" : "Kerberos Principal",
+              "identifiesControllerService" : false,
+              "name" : "Kerberos Principal",
+              "sensitive" : false
+            },
+            "Replication" : {
+              "displayName" : "Replication",
+              "identifiesControllerService" : false,
+              "name" : "Replication",
+              "sensitive" : false
+            },
+            "kerberos-user-service" : {
+              "displayName" : "Kerberos User Service",
+              "identifiesControllerService" : true,
+              "name" : "kerberos-user-service",
+              "sensitive" : false
+            },
+            "writing-strategy" : {
+              "displayName" : "Writing Strategy",
+              "identifiesControllerService" : false,
+              "name" : "writing-strategy",
+              "sensitive" : false
+            },
+            "Kerberos Relogin Period" : {
+              "displayName" : "Kerberos Relogin Period",
+              "identifiesControllerService" : false,
+              "name" : "Kerberos Relogin Period",
+              "sensitive" : false
+            },
+            "Directory" : {
+              "displayName" : "Directory",
+              "identifiesControllerService" : false,
+              "name" : "Directory",
+              "sensitive" : false
+            },
+            "Conflict Resolution Strategy" : {
+              "displayName" : "Conflict Resolution Strategy",
+              "identifiesControllerService" : false,
+              "name" : "Conflict Resolution Strategy",
+              "sensitive" : false
+            }
+          },
+          "retriedRelationships" : [ ],
+          "retryCount" : 10,
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.hadoop.PutHDFS",
+          "yieldDuration" : "1 sec"
+        }, {
+          "autoTerminatedRelationships" : [ ],
+          "backoffMechanism" : "PENALIZE_FLOWFILE",
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-update-attribute-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.17.0"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "a4dc5c78-491d-3883-83e0-2c56c41a9678",
+          "instanceIdentifier" : "969cf21a-a9fc-34f3-729d-b465005aa878",
+          "maxBackoffPeriod" : "10 mins",
+          "name" : "Переименовать файл",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 432.0,
+            "y" : 488.0
+          },
+          "properties" : {
+            "filename" : "#{rawFileName}",
+            "Store State" : "Do not store state",
+            "canonical-value-lookup-cache-size" : "100"
+          },
+          "propertyDescriptors" : {
+            "Delete Attributes Expression" : {
+              "displayName" : "Delete Attributes Expression",
+              "identifiesControllerService" : false,
+              "name" : "Delete Attributes Expression",
+              "sensitive" : false
+            },
+            "filename" : {
+              "displayName" : "filename",
+              "identifiesControllerService" : false,
+              "name" : "filename",
+              "sensitive" : false
+            },
+            "Store State" : {
+              "displayName" : "Store State",
+              "identifiesControllerService" : false,
+              "name" : "Store State",
+              "sensitive" : false
+            },
+            "canonical-value-lookup-cache-size" : {
+              "displayName" : "Cache Value Lookup Cache Size",
+              "identifiesControllerService" : false,
+              "name" : "canonical-value-lookup-cache-size",
+              "sensitive" : false
+            },
+            "Stateful Variables Initial Value" : {
+              "displayName" : "Stateful Variables Initial Value",
+              "identifiesControllerService" : false,
+              "name" : "Stateful Variables Initial Value",
+              "sensitive" : false
+            }
+          },
+          "retriedRelationships" : [ ],
+          "retryCount" : 10,
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.attributes.UpdateAttribute",
+          "yieldDuration" : "1 sec"
+        }, {
+          "autoTerminatedRelationships" : [ ],
+          "backoffMechanism" : "PENALIZE_FLOWFILE",
+          "bulletinLevel" : "WARN",
+          "bundle" : {
+            "artifact" : "nifi-kafka-2-6-nar",
+            "group" : "org.apache.nifi",
+            "version" : "1.17.0"
+          },
+          "comments" : "",
+          "componentType" : "PROCESSOR",
+          "concurrentlySchedulableTaskCount" : 1,
+          "executionNode" : "ALL",
+          "groupIdentifier" : "59d699b8-0262-3346-b522-6b3447c4ec35",
+          "identifier" : "2305ddf3-a3aa-30c5-8717-15779de20473",
+          "instanceIdentifier" : "634f015e-99f1-3091-74c7-f2c6e77be8fe",
+          "maxBackoffPeriod" : "10 mins",
+          "name" : "Сбор из Kafka",
+          "penaltyDuration" : "30 sec",
+          "position" : {
+            "x" : 432.0,
+            "y" : -280.0
+          },
+          "properties" : {
+            "Commit Offsets" : "true",
+            "group.id" : "#{Kafka Group ID}",
+            "bootstrap.servers" : "#{Kafka Brokers}",
+            "topic_type" : "pattern",
+            "max-uncommit-offset-wait" : "300 secs",
+            "sasl.mechanism" : "GSSAPI",
+            "honor-transactions" : "true",
+            "message-header-encoding" : "UTF-8",
+            "max.poll.records" : "1000",
+            "security.protocol" : "PLAINTEXT",
+            "sasl.token.auth" : "false",
+            "Communications Timeout" : "60 secs",
+            "topic" : "#{Kafka topic}",
+            "separate-by-key" : "false",
+            "key-attribute-encoding" : "utf-8",
+            "auto.offset.reset" : "earliest"
+          },
+          "propertyDescriptors" : {
+            "header-name-regex" : {
+              "displayName" : "Headers to Add as Attributes (Regex)",
+              "identifiesControllerService" : false,
+              "name" : "header-name-regex",
+              "sensitive" : false
+            },
+            "Commit Offsets" : {
+              "displayName" : "Commit Offsets",
+              "identifiesControllerService" : false,
+              "name" : "Commit Offsets",
+              "sensitive" : false
+            },
+            "group.id" : {
+              "displayName" : "Group ID",
+              "identifiesControllerService" : false,
+              "name" : "group.id",
+              "sensitive" : false
+            },
+            "bootstrap.servers" : {
+              "displayName" : "Kafka Brokers",
+              "identifiesControllerService" : false,
+              "name" : "bootstrap.servers",
+              "sensitive" : false
+            },
+            "topic_type" : {
+              "displayName" : "Topic Name Format",
+              "identifiesControllerService" : false,
+              "name" : "topic_type",
+              "sensitive" : false
+            },
+            "sasl.kerberos.principal" : {
+              "displayName" : "Kerberos Principal",
+              "identifiesControllerService" : false,
+              "name" : "sasl.kerberos.principal",
+              "sensitive" : false
+            },
+            "sasl.kerberos.service.name" : {
+              "displayName" : "Kerberos Service Name",
+              "identifiesControllerService" : false,
+              "name" : "sasl.kerberos.service.name",
+              "sensitive" : false
+            },
+            "kerberos-credentials-service" : {
+              "displayName" : "Kerberos Credentials Service",
+              "identifiesControllerService" : true,
+              "name" : "kerberos-credentials-service",
+              "sensitive" : false
+            },
+            "max-uncommit-offset-wait" : {
+              "displayName" : "Max Uncommitted Time",
+              "identifiesControllerService" : false,
+              "name" : "max-uncommit-offset-wait",
+              "sensitive" : false
+            },
+            "sasl.mechanism" : {
+              "displayName" : "SASL Mechanism",
+              "identifiesControllerService" : false,
+              "name" : "sasl.mechanism",
+              "sensitive" : false
+            },
+            "honor-transactions" : {
+              "displayName" : "Honor Transactions",
+              "identifiesControllerService" : false,
+              "name" : "honor-transactions",
+              "sensitive" : false
+            },
+            "kerberos-user-service" : {
+              "displayName" : "Kerberos User Service",
+              "identifiesControllerService" : true,
+              "name" : "kerberos-user-service",
+              "sensitive" : false
+            },
+            "message-header-encoding" : {
+              "displayName" : "Message Header Encoding",
+              "identifiesControllerService" : false,
+              "name" : "message-header-encoding",
+              "sensitive" : false
+            },
+            "message-demarcator" : {
+              "displayName" : "Message Demarcator",
+              "identifiesControllerService" : false,
+              "name" : "message-demarcator",
+              "sensitive" : false
+            },
+            "sasl.username" : {
+              "displayName" : "Username",
+              "identifiesControllerService" : false,
+              "name" : "sasl.username",
+              "sensitive" : false
+            },
+            "max.poll.records" : {
+              "displayName" : "Max Poll Records",
+              "identifiesControllerService" : false,
+              "name" : "max.poll.records",
+              "sensitive" : false
+            },
+            "security.protocol" : {
+              "displayName" : "Security Protocol",
+              "identifiesControllerService" : false,
+              "name" : "security.protocol",
+              "sensitive" : false
+            },
+            "ssl.context.service" : {
+              "displayName" : "SSL Context Service",
+              "identifiesControllerService" : true,
+              "name" : "ssl.context.service",
+              "sensitive" : false
+            },
+            "sasl.token.auth" : {
+              "displayName" : "Token Auth",
+              "identifiesControllerService" : false,
+              "name" : "sasl.token.auth",
+              "sensitive" : false
+            },
+            "sasl.kerberos.keytab" : {
+              "displayName" : "Kerberos Keytab",
+              "identifiesControllerService" : false,
+              "name" : "sasl.kerberos.keytab",
+              "resourceDefinition" : {
+                "cardinality" : "SINGLE",
+                "resourceTypes" : [ "FILE" ]
+              },
+              "sensitive" : false
+            },
+            "Communications Timeout" : {
+              "displayName" : "Communications Timeout",
+              "identifiesControllerService" : false,
+              "name" : "Communications Timeout",
+              "sensitive" : false
+            },
+            "topic" : {
+              "displayName" : "Topic Name(s)",
+              "identifiesControllerService" : false,
+              "name" : "topic",
+              "sensitive" : false
+            },
+            "separate-by-key" : {
+              "displayName" : "Separate By Key",
+              "identifiesControllerService" : false,
+              "name" : "separate-by-key",
+              "sensitive" : false
+            },
+            "sasl.password" : {
+              "displayName" : "Password",
+              "identifiesControllerService" : false,
+              "name" : "sasl.password",
+              "sensitive" : true
+            },
+            "key-attribute-encoding" : {
+              "displayName" : "Key Attribute Encoding",
+              "identifiesControllerService" : false,
+              "name" : "key-attribute-encoding",
+              "sensitive" : false
+            },
+            "auto.offset.reset" : {
+              "displayName" : "Offset Reset",
+              "identifiesControllerService" : false,
+              "name" : "auto.offset.reset",
+              "sensitive" : false
+            }
+          },
+          "retriedRelationships" : [ ],
+          "retryCount" : 10,
+          "runDurationMillis" : 0,
+          "scheduledState" : "ENABLED",
+          "schedulingPeriod" : "0 sec",
+          "schedulingStrategy" : "TIMER_DRIVEN",
+          "style" : { },
+          "type" : "org.apache.nifi.processors.kafka.pubsub.ConsumeKafka_2_6",
+          "yieldDuration" : "1 sec"
+        } ],
+        "remoteProcessGroups" : [ ],
+        "variables" : { }
+      },
+      "flowEncodingVersion" : "1.0",
+      "parameterContexts" : {
+        "template" : {
+          "componentType" : "PARAMETER_CONTEXT",
+          "inheritedParameterContexts" : [ ],
+          "name" : "template",
+          "parameters" : [ {
+            "description" : "",
+            "name" : "Raw file delimiter",
+            "sensitive" : false,
+            "value" : "e9cc3e05-dbde-4a18-bdf0-f3c8f16a2c1d{\"offset\": ${kafka.offset}, \"topic\": \"${kafka.topic}\"}c6011dfa-71f6-4791-bbe5-ae429cc29617"
+          }, {
+            "description" : "",
+            "name" : "RAW data batch size",
+            "sensitive" : false,
+            "value" : "128 MB"
+          }, {
+            "description" : "",
+            "name" : "transitIssueDirectory",
+            "sensitive" : false,
+            "value" : "/dc1/issue/raw-trans/mobile_app/v1/obd_data/"
+          }, {
+            "description" : "",
+            "name" : "transitDirectory",
+            "sensitive" : false,
+            "value" : "/dc1/trans/mobile_app/v1/obd_data/${now():format('yyyy-MM-dd','GMT')}"
+          }, {
+            "description" : "",
+            "name" : "After metadata sequence",
+            "sensitive" : false,
+            "value" : "c6011dfa-71f6-4791-bbe5-ae429cc29617"
+          }, {
+            "description" : "300 secs",
+            "name" : "RAW data listening timeout",
+            "sensitive" : false,
+            "value" : "10 secs"
+          }, {
+            "description" : "",
+            "name" : "RAW data batch size MIN",
+            "sensitive" : false,
+            "value" : "128 MB"
+          }, {
+            "description" : "SNAPPY\nNONE",
+            "name" : "Transit compression",
+            "sensitive" : false,
+            "value" : "NONE"
+          }, {
+            "description" : "",
+            "name" : "Transit data batch size MIN",
+            "sensitive" : false,
+            "value" : "128 MB"
+          }, {
+            "description" : "",
+            "name" : "Transit data listening timeout",
+            "sensitive" : false,
+            "value" : "10 secs"
+          }, {
+            "description" : "vk\\.direct_sale\\.auto_owner\\.v1\\.telemetry\\.v1\ntest1\nvk\\.direct_sale\\.auto_owner\\.v1\\.telemetry\\.v2",
+            "name" : "Kafka topic",
+            "sensitive" : false,
+            "value" : "test1"
+          }, {
+            "description" : "",
+            "name" : "rawRootDirectory",
+            "sensitive" : false,
+            "value" : "/dc1/raw/mobile_app/v1/obd_data/"
+          }, {
+            "description" : "",
+            "name" : "Before metadata sequence",
+            "sensitive" : false,
+            "value" : "e9cc3e05-dbde-4a18-bdf0-f3c8f16a2c1d"
+          }, {
+            "description" : "",
+            "name" : "transitFileName",
+            "sensitive" : false,
+            "value" : "${now():format('yyyyMMddhhmmss','GMT')}_${uuid}.parquet"
+          }, {
+            "description" : "",
+            "name" : "Kafka Group ID",
+            "sensitive" : false,
+            "value" : "gr1"
+          }, {
+            "description" : "",
+            "name" : "rawFileName",
+            "sensitive" : false,
+            "value" : "${now():format('yyyyMMddhhmmss','GMT')}_${uuid}.raw"
+          }, {
+            "description" : "",
+            "name" : "Kafka Brokers",
+            "sensitive" : false,
+            "value" : "kafka-0.ad-test.local:9092,kafka-1.ad-test.local:9092,kafka-2.ad-test.local:9092"
+          }, {
+            "description" : "",
+            "name" : "Transit data batch size",
+            "sensitive" : false,
+            "value" : "128 KB"
+          }, {
+            "description" : "",
+            "name" : "RAW data batch size MAX",
+            "sensitive" : false,
+            "value" : "128 MB"
+          }, {
+            "description" : "",
+            "name" : "rawIssueDirectory",
+            "sensitive" : false,
+            "value" : "/dc1/issue/kafka-raw/mobile_app/v1/obd_data/${now():format('yyyy-MM-dd','GMT')}"
+          }, {
+            "description" : "",
+            "name" : "Metadata attributes",
+            "sensitive" : false,
+            "value" : "kafka.offset,kafka.topic,kafka.partition,kafka.timestamp"
+          }, {
+            "description" : "",
+            "name" : "Transit data batch size MAX",
+            "sensitive" : false,
+            "value" : "256 MB"
+          }, {
+            "description" : "",
+            "name" : "rawDirectory",
+            "sensitive" : false,
+            "value" : "/dc1/raw/mobile_app/v1/obd_data/${now():format('yyyy-MM-dd','GMT')}"
+          }, {
+            "description" : "",
+            "name" : "Hadoop Configuration Resources",
+            "sensitive" : false,
+            "value" : "/opt/nifi/custom-config/core-site.xml, /opt/nifi/custom-config/hdfs-site.xml"
+          } ]
+        }
+      }
+    }
+  }
+}
